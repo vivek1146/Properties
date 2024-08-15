@@ -1,0 +1,62 @@
+import React from "react";
+import { villas } from "../villas";
+import { RxDot } from "react-icons/rx";
+import { Link } from "react-router-dom";
+
+const TopVillas = () => {
+  return (
+    <section id="topVillas">
+      <h1>TOP PICK VILLAS</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum esse
+        consequuntur eius, sed quos, itaque earum eos dolor minima delectus
+        sequi exercitationem dolorem illo dicta provident voluptatum nihil nam.
+        Assumenda!
+      </p>
+      <div className="villasContainer">
+        {villas.slice(0,3).map((element) => {
+          return (
+              <Link to={`/villa/${element.id}`} className="card" key={element.id}>
+                <img src={element.image} alt={element.name} />
+                <div className="location_text">
+                  <span>{element.location}</span>
+                  <span>
+                    <RxDot />
+                  </span>
+                  <span>{element.category}</span>
+                </div>
+                <div className="title_text">{element.name}</div>
+                <div className="specifications">
+                  <div className="spec">
+                   
+                    <span>{element.guests}</span>
+                    Guests
+                  </div>
+                  <div className="spec">
+                   
+                    <span>{element.bedrooms}</span>
+                    Bedrooms
+                  </div>
+                  <div className="spec">
+                    
+                    <span>{element.squareMeter}</span>
+                    Area
+                  </div>
+                  <div className="spec">
+                 
+                    <span>{element.bathrooms}</span>
+                    Bathrooms
+                  </div>
+                </div>
+                <div className="badge">
+                  From <span>₹{element.dailyRent} / Day </span>
+                </div>
+              </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
+
+export default TopVillas;
